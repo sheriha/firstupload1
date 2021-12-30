@@ -1,0 +1,1003 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/27/2021 10:34:25 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-IPIBF3G"
+  DTS:CreatorName="DESKTOP-IPIBF3G\User"
+  DTS:DTSID="{85B6C8A6-6974-4F0C-8FFF-4D2957263581}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Update"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{44D30825-7346-425B-9087-2E932E5A02E1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Fact Internet Sales- UpdateInvoicesItem"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{126cd5f9-82f4-4421-b26d-478338d2bf39}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fact Internet Sales- UpdateInvoicesItem"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Is Update?"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Inputs[Conditional Split Input].Columns[Operation]"
+                      cachedDataType="i4"
+                      cachedName="Operation"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[Operation]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Outputs[Update]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Update"
+                  synchronousInputId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[Operation]} == 2</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Operation == 2</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DWH].[FactInternetSales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DWH].[FactInternetSales]) [refTable]
+where [refTable].[SalesOrderID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SalesOrderID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OrderDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SalesOrderNumber" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitPrice" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quantity" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SalesOrderDetailID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TotalPrice" dataType="DT_NUMERIC" length="0" precision="38" scale="4" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[IV]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Connections[OleDbConnection]"
+                  connectionManagerID="{7B9C9163-F8D5-4EED-9058-B285DA9A55F3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Final_Project]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input].Columns[IV]"
+                      cachedDataType="i8"
+                      cachedName="IV"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[IV]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SalesOrderID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[CustomerID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CustomerID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">OrderDate</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[SalesOrderNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="20"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SalesOrderNumber</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Mrr_InvoicesItem Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[mrr].[Mrr_InvoicesItem]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Connections[OleDbConnection]"
+                  connectionManagerID="{7B9C9163-F8D5-4EED-9058-B285DA9A55F3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Final_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[KLINE]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[KLINE]"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[KLINE]"
+                      name="KLINE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[IV]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[IV]"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[IV]"
+                      name="IV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[PART]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[PART]"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[PART]"
+                      name="PART"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[PRICE]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[PRICE]"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[PRICE]"
+                      name="PRICE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[QUANT]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[QUANT]"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[QUANT]"
+                      name="QUANT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[Operation]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[Operation]"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[Operation]"
+                      name="Operation"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[KLINE]"
+                      dataType="i8"
+                      name="KLINE" />
+                    <externalMetadataColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[IV]"
+                      dataType="i8"
+                      name="IV" />
+                    <externalMetadataColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[PART]"
+                      dataType="i8"
+                      name="PART" />
+                    <externalMetadataColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[PRICE]"
+                      dataType="cy"
+                      name="PRICE" />
+                    <externalMetadataColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[QUANT]"
+                      dataType="i8"
+                      name="QUANT" />
+                    <externalMetadataColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].ExternalColumns[Operation]"
+                      dataType="i4"
+                      name="Operation" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[KLINE]"
+                      dataType="i8"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[KLINE]"
+                      name="KLINE" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[IV]"
+                      dataType="i8"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[IV]"
+                      name="IV" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[PART]"
+                      dataType="i8"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[PART]"
+                      name="PART" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[PRICE]"
+                      dataType="cy"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[PRICE]"
+                      name="PRICE" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[QUANT]"
+                      dataType="i8"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[QUANT]"
+                      name="QUANT" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[Operation]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[Operation]"
+                      name="Operation" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Total Price"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Inputs[Derived Column Input].Columns[PRICE]"
+                      cachedDataType="cy"
+                      cachedName="PRICE"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[PRICE]" />
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Inputs[Derived Column Input].Columns[QUANT]"
+                      cachedDataType="i8"
+                      cachedName="QUANT"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[QUANT]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Output].Columns[TotalPrice]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Output].Columns[TotalPrice]"
+                      name="TotalPrice"
+                      precision="38"
+                      scale="4"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[PRICE]} * #{Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[QUANT]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">PRICE * QUANT</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[KLINE]"
+                      cachedDataType="i8"
+                      cachedName="KLINE"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[KLINE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[KLINE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[IV]"
+                      cachedDataType="i8"
+                      cachedName="IV"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[IV]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[IV]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[PART]"
+                      cachedDataType="i8"
+                      cachedName="PART"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[PART]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[PART]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[PRICE]"
+                      cachedDataType="cy"
+                      cachedName="PRICE"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[PRICE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[PRICE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[QUANT]"
+                      cachedDataType="i8"
+                      cachedName="QUANT"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[QUANT]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[QUANT]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[Operation]"
+                      cachedDataType="i4"
+                      cachedName="Operation"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[Operation]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[Operation]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[CustomerID]"
+                      cachedDataType="i8"
+                      cachedName="CustomerID"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[CustomerID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[CustomerID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[OrderDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[OrderDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[SalesOrderNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="SalesOrderNumber"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[SalesOrderNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[SalesOrderNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[TotalPrice]"
+                      cachedDataType="numeric"
+                      cachedName="TotalPrice"
+                      cachedPrecision="38"
+                      cachedScale="4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Output].Columns[TotalPrice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[TotalPrice]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[KLINE]"
+                      dataType="i8"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[KLINE]"
+                      name="KLINE" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[IV]"
+                      dataType="i8"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[IV]"
+                      name="IV" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[PART]"
+                      dataType="i8"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[PART]"
+                      name="PART" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[PRICE]"
+                      dataType="cy"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[PRICE]"
+                      name="PRICE" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[QUANT]"
+                      dataType="i8"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[QUANT]"
+                      name="QUANT" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[Operation]"
+                      dataType="i4"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[Operation]"
+                      name="Operation" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[CustomerID]"
+                      dataType="i8"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[SalesOrderNumber]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber" />
+                    <outputColumn
+                      refId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[TotalPrice]"
+                      dataType="numeric"
+                      lineageId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[TotalPrice]"
+                      name="TotalPrice"
+                      precision="38"
+                      scale="4" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Fact Internet Sales- UpdateInvoicesItem.Paths[Derived Column Output]"
+              endId="Package\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Fact Internet Sales- UpdateInvoicesItem.Paths[Lookup Match Output]"
+              endId="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Fact Internet Sales- UpdateInvoicesItem.Paths[OLE DB Source Output]"
+              endId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Fact Internet Sales- UpdateInvoicesItem.Paths[Update]"
+              endId="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]"
+              name="Update"
+              startId="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Outputs[Update]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="269,42"
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Fact Internet Sales- UpdateInvoicesItem">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1"
+          TopLeft="530,213" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source"
+          TopLeft="495,16" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem\Total Price"
+          TopLeft="524,343" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem\Union All"
+          TopLeft="299,345" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem\Is Update?"
+          TopLeft="528,90" />
+        <EdgeLayout
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem.Paths[Update]"
+          TopLeft="592,132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-16.28029296875,30.9453125,32.5605859375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem.Paths[OLE DB Source Output]"
+          TopLeft="593.25,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem.Paths[Lookup Match Output]"
+          TopLeft="589.75,255">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,88"
+              Start="0,0"
+              End="0,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,34.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Fact Internet Sales- UpdateInvoicesItem.Paths[Derived Column Output]"
+          TopLeft="524,365">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104,0"
+              Start="0,0"
+              End="-96.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-96.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-56.25,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Fact Internet Sales- UpdateInvoicesItem\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[FactInternetSales]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
