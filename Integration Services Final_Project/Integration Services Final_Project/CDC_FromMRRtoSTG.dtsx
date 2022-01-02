@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="CDC_FromMRRtoSTG"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{EAA91704-1A2F-4907-8C0B-35D229F9CCF7}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{F1439EB8-A0D8-4D0D-87D8-77910CAA78AC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2041,7 +2041,6 @@ where [refTable].[SalesOrderID] = ?</property>
           DTS:refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:Disabled="True"
           DTS:DTSID="{95f8be12-9fd9-4942-bc23-d1c755c4b06e}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
@@ -2142,11 +2141,11 @@ where [refTable].[SalesOrderID] = ?</property>
                   </outputs>
                 </component>
                 <component
-                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup"
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact"
                   componentClassID="Microsoft.Lookup"
                   contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
                   description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-                  name="Lookup"
+                  name="Lookup with fact"
                   usesDispositions="true"
                   version="6">
                   <properties>
@@ -2210,7 +2209,7 @@ where [refTable].[SalesOrderID] = ?</property>
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Connections[OleDbConnection]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Connections[OleDbConnection]"
                       connectionManagerID="{7B9C9163-F8D5-4EED-9058-B285DA9A55F3}:external"
                       connectionManagerRefId="Project.ConnectionManagers[LocalHost.Final_Project]"
                       description="Connection manager used to access lookup data."
@@ -2218,11 +2217,11 @@ where [refTable].[SalesOrderID] = ?</property>
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Inputs[Lookup Input]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Inputs[Lookup Input]"
                       name="Lookup Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Inputs[Lookup Input].Columns[IV]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Inputs[Lookup Input].Columns[IV]"
                           cachedDataType="i8"
                           cachedName="IV"
                           lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Mrr_invoices Source.Outputs[OLE DB Source Output].Columns[IV]">
@@ -2243,17 +2242,17 @@ where [refTable].[SalesOrderID] = ?</property>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output]"
                       errorOrTruncationOperation="Lookup"
                       exclusionGroup="1"
                       name="Lookup Match Output"
-                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Inputs[Lookup Input]">
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Inputs[Lookup Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output].Columns[TotalPrice]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output].Columns[TotalPrice]"
                           dataType="numeric"
                           errorOrTruncationOperation="Copy Column"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output].Columns[TotalPrice]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output].Columns[TotalPrice]"
                           name="TotalPrice"
                           precision="38"
                           scale="4"
@@ -2266,10 +2265,10 @@ where [refTable].[SalesOrderID] = ?</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output].Columns[FactID]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output].Columns[FactID]"
                           dataType="i4"
                           errorOrTruncationOperation="Copy Column"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output].Columns[FactID]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output].Columns[FactID]"
                           name="FactID"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2280,10 +2279,10 @@ where [refTable].[SalesOrderID] = ?</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output].Columns[SalesOrderDetailID]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output].Columns[SalesOrderDetailID]"
                           dataType="i8"
                           errorOrTruncationOperation="Copy Column"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output].Columns[SalesOrderDetailID]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output].Columns[SalesOrderDetailID]"
                           name="SalesOrderDetailID"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2297,30 +2296,171 @@ where [refTable].[SalesOrderID] = ?</property>
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup No Match Output]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup No Match Output]"
                       description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                       exclusionGroup="1"
                       name="Lookup No Match Output"
-                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Inputs[Lookup Input]">
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Inputs[Lookup Input]">
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Error Output]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Lookup Error Output"
-                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Inputs[Lookup Input]">
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Inputs[Lookup Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup with InvoiceItems"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [mrr].[Mrr_InvoicesItem]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [mrr].[Mrr_InvoicesItem]) [refTable]
+where [refTable].[IV] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="KLINE" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IV" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PART" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PRICE" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="QUANT" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Operation" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Mrr_invoices Source.Outputs[OLE DB Source Output].Columns[IV]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Connections[OleDbConnection]"
+                      connectionManagerID="{7B9C9163-F8D5-4EED-9058-B285DA9A55F3}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.Final_Project]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Inputs[Lookup Input].Columns[IV]"
+                          cachedDataType="i8"
+                          cachedName="IV"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Mrr_invoices Source.Outputs[OLE DB Source Output].Columns[IV]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">IV</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -2510,6 +2650,201 @@ where [refTable].[SalesOrderID] = ?</property>
                   </outputs>
                 </component>
                 <component
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Stg_FactInternetSales"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[stg].[FactInternetSales]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Connections[OleDbConnection]"
+                      connectionManagerID="{7B9C9163-F8D5-4EED-9058-B285DA9A55F3}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.Final_Project]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[IV]"
+                          cachedDataType="i8"
+                          cachedName="IV"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IV]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Outputs[Union All Output 1].Columns[IV]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[Cust]"
+                          cachedDataType="i8"
+                          cachedName="Cust"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[Cust]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Outputs[Union All Output 1].Columns[Cust]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[IVDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="IVDate"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IVDate]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Outputs[Union All Output 1].Columns[IVDate]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[IVNUM]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="IVNUM"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IVNUM]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Outputs[Union All Output 1].Columns[IVNUM]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[Operation]"
+                          cachedDataType="i4"
+                          cachedName="Operation"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[Operation]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Outputs[Union All Output 1].Columns[Operation]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[TotalPrice]"
+                          cachedDataType="numeric"
+                          cachedName="TotalPrice"
+                          cachedPrecision="38"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[TotalPrice]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Outputs[Union All Output 1].Columns[TotalPrice]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[SalesOrderDetailID]"
+                          cachedDataType="i8"
+                          cachedName="SalesOrderDetailID"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[KLINE]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Outputs[Union All Output 1].Columns[SalesOrderDetailID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[KEY]"
+                          dataType="i4"
+                          name="KEY" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IV]"
+                          dataType="i8"
+                          name="IV" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[Cust]"
+                          dataType="i8"
+                          name="Cust" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IVDate]"
+                          dataType="dbTimeStamp"
+                          name="IVDate" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IVNUM]"
+                          dataType="wstr"
+                          length="20"
+                          name="IVNUM" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[KLINE]"
+                          dataType="i8"
+                          name="KLINE" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[PART]"
+                          dataType="i8"
+                          name="PART" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[PRICE]"
+                          dataType="cy"
+                          name="PRICE" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[QUANT]"
+                          dataType="i8"
+                          name="QUANT" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[TotalPrice]"
+                          dataType="numeric"
+                          name="TotalPrice"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[Operation]"
+                          dataType="i4"
+                          name="Operation" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All"
                   componentClassID="Microsoft.UnionAll"
                   contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -2593,7 +2928,7 @@ where [refTable].[SalesOrderID] = ?</property>
                           cachedName="TotalPrice"
                           cachedPrecision="38"
                           cachedScale="4"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output].Columns[TotalPrice]">
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output].Columns[TotalPrice]">
                           <properties>
                             <property
                               containsID="true"
@@ -2606,7 +2941,7 @@ where [refTable].[SalesOrderID] = ?</property>
                           refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Inputs[Union All Input 1].Columns[FactID]"
                           cachedDataType="i4"
                           cachedName="FactID"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output].Columns[FactID]">
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output].Columns[FactID]">
                           <properties>
                             <property
                               containsID="true"
@@ -2619,7 +2954,7 @@ where [refTable].[SalesOrderID] = ?</property>
                           refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Inputs[Union All Input 1].Columns[SalesOrderDetailID]"
                           cachedDataType="i8"
                           cachedName="SalesOrderDetailID"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output].Columns[SalesOrderDetailID]">
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output].Columns[SalesOrderDetailID]">
                           <properties>
                             <property
                               containsID="true"
@@ -2698,15 +3033,25 @@ where [refTable].[SalesOrderID] = ?</property>
                   refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[Lookup Match Output]"
                   endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Inputs[Union All Input 1]"
                   name="Lookup Match Output"
-                  startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Outputs[Lookup Match Output]" />
+                  startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[Lookup No Match Output]"
+                  endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact.Inputs[Lookup Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Outputs[Lookup No Match Output]" />
                 <path
                   refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[OLE DB Source Output]"
                   endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Is Update?.Inputs[Conditional Split Input]"
                   name="OLE DB Source Output"
                   startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Mrr_invoices Source.Outputs[OLE DB Source Output]" />
                 <path
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[Union All Output 1]"
+                  endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales.Inputs[OLE DB Destination Input]"
+                  name="Union All Output 1"
+                  startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All.Outputs[Union All Output 1]" />
+                <path
                   refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[Update]"
-                  endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup.Inputs[Lookup Input]"
+                  endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems.Inputs[Lookup Input]"
                   name="Update"
                   startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Is Update?.Outputs[Update]" />
               </paths>
@@ -2818,11 +3163,11 @@ where [refTable].[SalesOrderID] = ?</property>
                   </outputs>
                 </component>
                 <component
-                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1"
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact"
                   componentClassID="Microsoft.Lookup"
                   contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
                   description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-                  name="Lookup 1"
+                  name="Lookup with Fact"
                   usesDispositions="true"
                   version="6">
                   <properties>
@@ -2886,7 +3231,7 @@ where [refTable].[SalesOrderID] = ?</property>
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Connections[OleDbConnection]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Connections[OleDbConnection]"
                       connectionManagerID="{7B9C9163-F8D5-4EED-9058-B285DA9A55F3}:external"
                       connectionManagerRefId="Project.ConnectionManagers[LocalHost.Final_Project]"
                       description="Connection manager used to access lookup data."
@@ -2894,11 +3239,11 @@ where [refTable].[SalesOrderID] = ?</property>
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Inputs[Lookup Input]"
                       name="Lookup Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input].Columns[IV]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Inputs[Lookup Input].Columns[IV]"
                           cachedDataType="i8"
                           cachedName="IV"
                           lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[IV]">
@@ -2919,17 +3264,17 @@ where [refTable].[SalesOrderID] = ?</property>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output]"
                       errorOrTruncationOperation="Lookup"
                       exclusionGroup="1"
                       name="Lookup Match Output"
-                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]">
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Inputs[Lookup Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[CustomerID]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[CustomerID]"
                           dataType="i8"
                           errorOrTruncationOperation="Copy Column"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[CustomerID]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[CustomerID]"
                           name="CustomerID"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2940,10 +3285,10 @@ where [refTable].[SalesOrderID] = ?</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[OrderDate]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[OrderDate]"
                           dataType="dbTimeStamp"
                           errorOrTruncationOperation="Copy Column"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[OrderDate]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[OrderDate]"
                           name="OrderDate"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2954,11 +3299,11 @@ where [refTable].[SalesOrderID] = ?</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[SalesOrderNumber]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[SalesOrderNumber]"
                           dataType="wstr"
                           errorOrTruncationOperation="Copy Column"
                           length="20"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[SalesOrderNumber]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[SalesOrderNumber]"
                           name="SalesOrderNumber"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2969,10 +3314,10 @@ where [refTable].[SalesOrderID] = ?</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[FactID]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[FactID]"
                           dataType="i4"
                           errorOrTruncationOperation="Copy Column"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[FactID]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[FactID]"
                           name="FactID"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -2986,30 +3331,171 @@ where [refTable].[SalesOrderID] = ?</property>
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup No Match Output]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup No Match Output]"
                       description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                       exclusionGroup="1"
                       name="Lookup No Match Output"
-                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]">
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Inputs[Lookup Input]">
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output]"
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Lookup Error Output"
-                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]">
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Inputs[Lookup Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup with Invoice"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [mrr].[Mrr_Invoices]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [mrr].[Mrr_Invoices]) [refTable]
+where [refTable].[IV] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="IV" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Cust" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IVDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IVNUM" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Operation" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[IV]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Connections[OleDbConnection]"
+                      connectionManagerID="{7B9C9163-F8D5-4EED-9058-B285DA9A55F3}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.Final_Project]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Inputs[Lookup Input].Columns[IV]"
+                          cachedDataType="i8"
+                          cachedName="IV"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output].Columns[IV]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">IV</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -3214,6 +3700,219 @@ where [refTable].[SalesOrderID] = ?</property>
                   </outputs>
                 </component>
                 <component
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Stg_FactInternetSales"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[stg].[FactInternetSales]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Connections[OleDbConnection]"
+                      connectionManagerID="{7B9C9163-F8D5-4EED-9058-B285DA9A55F3}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.Final_Project]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[KLINE]"
+                          cachedDataType="i8"
+                          cachedName="KLINE"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[KLINE]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[KLINE]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[IV]"
+                          cachedDataType="i8"
+                          cachedName="IV"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IV]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[IV]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[PART]"
+                          cachedDataType="i8"
+                          cachedName="PART"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[PART]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[PART]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[PRICE]"
+                          cachedDataType="cy"
+                          cachedName="PRICE"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[PRICE]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[PRICE]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[QUANT]"
+                          cachedDataType="i8"
+                          cachedName="QUANT"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[QUANT]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[QUANT]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[Operation]"
+                          cachedDataType="i4"
+                          cachedName="Operation"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[Operation]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[Operation]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[TotalPrice]"
+                          cachedDataType="numeric"
+                          cachedName="TotalPrice"
+                          cachedPrecision="38"
+                          cachedScale="4"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[TotalPrice]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[TotalPrice]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                          cachedDataType="i8"
+                          cachedName="CustomerID"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[Cust]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[CustomerID]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[OrderDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="OrderDate"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IVDate]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[OrderDate]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].Columns[SalesOrderNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="SalesOrderNumber"
+                          externalMetadataColumnId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IVNUM]"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1].Columns[SalesOrderNumber]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[KEY]"
+                          dataType="i4"
+                          name="KEY" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IV]"
+                          dataType="i8"
+                          name="IV" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[Cust]"
+                          dataType="i8"
+                          name="Cust" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IVDate]"
+                          dataType="dbTimeStamp"
+                          name="IVDate" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[IVNUM]"
+                          dataType="wstr"
+                          length="20"
+                          name="IVNUM" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[KLINE]"
+                          dataType="i8"
+                          name="KLINE" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[PART]"
+                          dataType="i8"
+                          name="PART" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[PRICE]"
+                          dataType="cy"
+                          name="PRICE" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[QUANT]"
+                          dataType="i8"
+                          name="QUANT" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[TotalPrice]"
+                          dataType="numeric"
+                          name="TotalPrice"
+                          precision="38"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input].ExternalColumns[Operation]"
+                          dataType="i4"
+                          name="Operation" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Total Price"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -3394,7 +4093,7 @@ where [refTable].[SalesOrderID] = ?</property>
                           refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[CustomerID]"
                           cachedDataType="i8"
                           cachedName="CustomerID"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[CustomerID]">
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[CustomerID]">
                           <properties>
                             <property
                               containsID="true"
@@ -3407,7 +4106,7 @@ where [refTable].[SalesOrderID] = ?</property>
                           refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Inputs[Union All Input 1].Columns[OrderDate]"
                           cachedDataType="dbTimeStamp"
                           cachedName="OrderDate"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[OrderDate]">
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[OrderDate]">
                           <properties>
                             <property
                               containsID="true"
@@ -3421,7 +4120,7 @@ where [refTable].[SalesOrderID] = ?</property>
                           cachedDataType="wstr"
                           cachedLength="20"
                           cachedName="SalesOrderNumber"
-                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output].Columns[SalesOrderNumber]">
+                          lineageId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output].Columns[SalesOrderNumber]">
                           <properties>
                             <property
                               containsID="true"
@@ -3530,15 +4229,25 @@ where [refTable].[SalesOrderID] = ?</property>
                   refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Lookup Match Output]"
                   endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Total Price.Inputs[Derived Column Input]"
                   name="Lookup Match Output"
-                  startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Outputs[Lookup Match Output]" />
+                  startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Lookup No Match Output]"
+                  endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact.Inputs[Lookup Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Outputs[Lookup No Match Output]" />
                 <path
                   refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[OLE DB Source Output]"
                   endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Inputs[Conditional Split Input]"
                   name="OLE DB Source Output"
                   startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source.Outputs[OLE DB Source Output]" />
                 <path
+                  refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Union All Output 1]"
+                  endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales.Inputs[OLE DB Destination Input]"
+                  name="Union All Output 1"
+                  startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All.Outputs[Union All Output 1]" />
+                <path
                   refId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Update]"
-                  endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1.Inputs[Lookup Input]"
+                  endId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice.Inputs[Lookup Input]"
                   name="Update"
                   startId="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Is Update?.Outputs[Update]" />
               </paths>
@@ -3720,7 +4429,7 @@ where [refTable].[SalesOrderID] = ?</property>
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[stg].[stg_DimCategory]</property>
+                      name="OpenRowset">[stg].[DimCategory]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -3789,6 +4498,12 @@ where [refTable].[SalesOrderID] = ?</property>
                           cachedName="FAMILY"
                           externalMetadataColumnId="Package\MRR TO STG\Stg Category\Stg_Category.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
                           lineageId="Package\MRR TO STG\Stg Category\Mrr_Family Source.Outputs[OLE DB Source Output].Columns[FAMILY]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Stg Category\Stg_Category.Inputs[OLE DB Destination Input].Columns[Operation]"
+                          cachedDataType="i4"
+                          cachedName="Operation"
+                          externalMetadataColumnId="Package\MRR TO STG\Stg Category\Stg_Category.Inputs[OLE DB Destination Input].ExternalColumns[Operation]"
+                          lineageId="Package\MRR TO STG\Stg Category\Mrr_Family Source.Outputs[OLE DB Source Output].Columns[Operation]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -6254,11 +6969,11 @@ where [refTable].[SalesOrderID] = ?</property>
                   </outputs>
                 </component>
                 <component
-                  refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory"
+                  refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="Stg_SubCategory"
+                  name="Stg_DimSubCategory"
                   usesDispositions="true"
                   version="4">
                   <properties>
@@ -6311,7 +7026,7 @@ where [refTable].[SalesOrderID] = ?</property>
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Connections[OleDbConnection]"
+                      refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Connections[OleDbConnection]"
                       connectionManagerID="{7B9C9163-F8D5-4EED-9058-B285DA9A55F3}:external"
                       connectionManagerRefId="Project.ConnectionManagers[LocalHost.Final_Project]"
                       description="The OLE DB runtime connection used to access the database."
@@ -6319,43 +7034,55 @@ where [refTable].[SalesOrderID] = ?</property>
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input]"
+                      refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input].Columns[FAMILYTYPE]"
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].Columns[Operation]"
+                          cachedDataType="i4"
+                          cachedName="Operation"
+                          externalMetadataColumnId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].ExternalColumns[Operation]"
+                          lineageId="Package\MRR TO STG\Stg Sub Category\Mrr_FamilyType Source.Outputs[OLE DB Source Output].Columns[Operation]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].Columns[FAMILYTYPE]"
                           cachedDataType="i8"
                           cachedName="FAMILYTYPE"
-                          externalMetadataColumnId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryKey]"
+                          externalMetadataColumnId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryKey]"
                           lineageId="Package\MRR TO STG\Stg Sub Category\Mrr_FamilyType Source.Outputs[OLE DB Source Output].Columns[FAMILYTYPE]" />
                         <inputColumn
-                          refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input].Columns[FTNAME]"
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].Columns[FTNAME]"
                           cachedDataType="wstr"
                           cachedLength="50"
                           cachedName="FTNAME"
-                          externalMetadataColumnId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input].ExternalColumns[SubcategoryName]"
+                          externalMetadataColumnId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].ExternalColumns[SubcategoryName]"
                           lineageId="Package\MRR TO STG\Stg Sub Category\Mrr_FamilyType Source.Outputs[OLE DB Source Output].Columns[FTNAME]" />
+                        <inputColumn
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].Columns[FTCODE]"
+                          cachedDataType="i8"
+                          cachedName="FTCODE"
+                          externalMetadataColumnId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                          lineageId="Package\MRR TO STG\Stg Sub Category\Mrr_FamilyType Source.Outputs[OLE DB Source Output].Columns[FTCODE]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
-                          dataType="i8"
-                          name="CategoryID" />
-                        <externalMetadataColumn
-                          refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryKey]"
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].ExternalColumns[SubCategoryKey]"
                           dataType="i8"
                           name="SubCategoryKey" />
                         <externalMetadataColumn
-                          refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input].ExternalColumns[SubcategoryName]"
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].ExternalColumns[SubcategoryName]"
                           dataType="wstr"
                           length="50"
                           name="SubcategoryName" />
                         <externalMetadataColumn
-                          refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input].ExternalColumns[Operation]"
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                          dataType="i8"
+                          name="CategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input].ExternalColumns[Operation]"
                           dataType="i4"
                           name="Operation" />
                       </externalMetadataColumns>
@@ -6363,22 +7090,22 @@ where [refTable].[SalesOrderID] = ?</property>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -6390,7 +7117,7 @@ where [refTable].[SalesOrderID] = ?</property>
               <paths>
                 <path
                   refId="Package\MRR TO STG\Stg Sub Category.Paths[OLE DB Source Output]"
-                  endId="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory.Inputs[OLE DB Destination Input]"
+                  endId="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory.Inputs[OLE DB Destination Input]"
                   name="OLE DB Source Output"
                   startId="Package\MRR TO STG\Stg Sub Category\Mrr_FamilyType Source.Outputs[OLE DB Source Output]" />
               </paths>
@@ -6549,10 +7276,6 @@ where [refTable].[SalesOrderID] = ?</property>
           Id="Package\MRR TO STG\Fact Internet Sales- Insert\Stg FactInternetSales"
           TopLeft="251,557" />
         <NodeLayout
-          Size="121,42"
-          Id="Package\MRR TO STG\Fact Internet Sales- Insert\Union All"
-          TopLeft="283,376" />
-        <NodeLayout
           Size="197,42"
           Id="Package\MRR TO STG\Fact Internet Sales- Insert\Mrr_InvoicesItem Source"
           TopLeft="534,22" />
@@ -6565,9 +7288,9 @@ where [refTable].[SalesOrderID] = ?</property>
           Id="Package\MRR TO STG\Fact Internet Sales- Insert\Lookup 1"
           TopLeft="571,166" />
         <NodeLayout
-          Size="129,42"
-          Id="Package\MRR TO STG\Fact Internet Sales- Insert\Total Price"
-          TopLeft="276,458" />
+          Size="121,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- Insert\Union All"
+          TopLeft="283,376" />
         <NodeLayout
           Size="113,42"
           Id="Package\MRR TO STG\Fact Internet Sales- Insert\Lookup"
@@ -6576,6 +7299,10 @@ where [refTable].[SalesOrderID] = ?</property>
           Size="107,42"
           Id="Package\MRR TO STG\Fact Internet Sales- Insert\Sort 1"
           TopLeft="377,162" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- Insert\Total Price"
+          TopLeft="276,458" />
         <EdgeLayout
           Id="Package\MRR TO STG\Fact Internet Sales- Insert.Paths[Union All Output 1]"
           TopLeft="342,418">
@@ -6896,81 +7623,37 @@ where [refTable].[SalesOrderID] = ?</property>
     design-time-name="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="121,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All"
+          TopLeft="292,146" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Is Update?"
+          TopLeft="273,15" />
         <NodeLayout
           Size="173,42"
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Mrr_invoices Source"
           TopLeft="34,14" />
         <NodeLayout
-          Size="130,42"
-          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Is Update?"
-          TopLeft="147,109" />
-        <NodeLayout
-          Size="113,42"
-          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup"
-          TopLeft="405,147" />
-        <EdgeLayout
-          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[Update]"
-          TopLeft="277,130">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="128,38"
-              Start="0,0"
-              End="120.5,38">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="60,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="60,0"
-                    Point2="64,0"
-                    Point3="64,4" />
-                  <mssgle:LineSegment
-                    End="64,34" />
-                  <mssgle:CubicBezierSegment
-                    Point1="64,34"
-                    Point2="64,38"
-                    Point3="68,38" />
-                  <mssgle:LineSegment
-                    End="120.5,38" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="47.71970703125,-17.609375,32.5605859375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="157,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact"
+          TopLeft="523,146" />
         <EdgeLayout
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[OLE DB Source Output]"
-          TopLeft="120.5,56">
+          TopLeft="207,35.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="91.5,53"
+              EndConnector="66,0"
               Start="0,0"
-              End="91.5,45.5">
+              End="58.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.5"
-                    Point2="0,26.5"
-                    Point3="4,26.5" />
-                  <mssgle:LineSegment
-                    End="87.5,26.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="87.5,26.5"
-                    Point2="91.5,26.5"
-                    Point3="91.5,30.5" />
-                  <mssgle:LineSegment
-                    End="91.5,45.5" />
+                    End="58.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6979,44 +7662,106 @@ where [refTable].[SalesOrderID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="121,42"
-          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Union All"
-          TopLeft="455,300" />
         <EdgeLayout
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[Lookup Match Output]"
-          TopLeft="461.5,189">
+          TopLeft="523,167">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="54,111"
+              EndConnector="-110,0"
               Start="0,0"
-              End="54,103.5">
+              End="-102.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,51.5"
-                    Point2="0,55.5"
-                    Point3="4,55.5" />
-                  <mssgle:LineSegment
-                    End="50,55.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="50,55.5"
-                    Point2="54,55.5"
-                    Point3="54,59.5" />
-                  <mssgle:LineSegment
-                    End="54,103.5" />
+                    End="-102.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-21.19138671875,60.5,96.3827734375,11.609375"
+              BoundingBox="-99.44138671875,5,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="200,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems"
+          TopLeft="506,10" />
+        <EdgeLayout
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[Update]"
+          TopLeft="403,33.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103,0"
+              Start="0,0"
+              End="95.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="95.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="31.46970703125,5,32.5605859375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[Lookup No Match Output]"
+          TopLeft="603.75,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,94"
+              Start="0,0"
+              End="0,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,37.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="182,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales"
+          TopLeft="36,140" />
+        <EdgeLayout
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices.Paths[Union All Output 1]"
+          TopLeft="292,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-74,0"
+              Start="0,0"
+              End="-66.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-66.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7036,12 +7781,12 @@ where [refTable].[SalesOrderID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup">
+    design-time-name="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with fact">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7051,7 +7796,7 @@ where [refTable].[SalesOrderID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7064,63 +7809,39 @@ where [refTable].[SalesOrderID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="122,42"
-          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1"
-          TopLeft="530,213" />
+          Size="159,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact"
+          TopLeft="539,167" />
         <NodeLayout
           Size="197,42"
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Mrr_InvoicesItem Source"
-          TopLeft="495,16" />
+          TopLeft="41,19" />
         <NodeLayout
           Size="129,42"
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Total Price"
-          TopLeft="524,343" />
+          TopLeft="339,163" />
         <NodeLayout
           Size="121,42"
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Union All"
-          TopLeft="299,345" />
+          TopLeft="110,162" />
         <NodeLayout
           Size="130,42"
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Is Update?"
-          TopLeft="528,90" />
-        <EdgeLayout
-          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Update]"
-          TopLeft="592,132">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,81"
-              Start="0,0"
-              End="0,73.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-16.28029296875,30.9453125,32.5605859375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="281,19" />
         <EdgeLayout
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[OLE DB Source Output]"
-          TopLeft="593.25,58">
+          TopLeft="238,40">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32"
+              EndConnector="43,0"
               Start="0,0"
-              End="0,24.5">
+              End="35.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
+                    End="35.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7131,50 +7852,140 @@ where [refTable].[SalesOrderID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Lookup Match Output]"
-          TopLeft="589.75,255">
+          TopLeft="539,186">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,88"
+              EndConnector="-71,0"
               Start="0,0"
-              End="0,80.5">
+              End="-63.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,80.5" />
+                    End="-63.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,34.4453125,96.3827734375,11.609375"
+              BoundingBox="-79.94138671875,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Derived Column Output]"
-          TopLeft="524,365">
+          TopLeft="339,183.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-104,0"
+              EndConnector="-108,0"
               Start="0,0"
-              End="-96.5,0">
+              End="-100.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-96.5,0" />
+                    End="-100.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-56.25,5,16,16"
+              BoundingBox="-58.25,5,16,16"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice"
+          TopLeft="522,19" />
+        <EdgeLayout
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Update]"
+          TopLeft="411,40">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111,0"
+              Start="0,0"
+              End="103.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="103.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="35.46970703125,5,32.5605859375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Lookup No Match Output]"
+          TopLeft="609,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.5,106"
+              Start="0,0"
+              End="9.5,98.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49"
+                    Point2="0,53"
+                    Point3="4,53" />
+                  <mssgle:LineSegment
+                    End="5.5,53" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.5,53"
+                    Point2="9.5,53"
+                    Point3="9.5,57" />
+                  <mssgle:LineSegment
+                    End="9.5,98.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-51.05638671875,58,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="182,42"
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales"
+          TopLeft="82,274" />
+        <EdgeLayout
+          Id="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem.Paths[Union All Output 1]"
+          TopLeft="171.75,204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7194,12 +8005,12 @@ where [refTable].[SalesOrderID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup 1">
+    design-time-name="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Fact">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7209,7 +8020,7 @@ where [refTable].[SalesOrderID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7724,23 +8535,35 @@ where [refTable].[SalesOrderID] = ?</property>
           Id="Package\MRR TO STG\Stg Sub Category\Mrr_FamilyType Source"
           TopLeft="108,54" />
         <NodeLayout
-          Size="160,42"
-          Id="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory"
-          TopLeft="128,191" />
+          Size="179,42"
+          Id="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory"
+          TopLeft="161,151" />
         <EdgeLayout
           Id="Package\MRR TO STG\Stg Sub Category.Paths[OLE DB Source Output]"
-          TopLeft="205.25,96">
+          TopLeft="202.5,96">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,95"
+              EndConnector="48,55"
               Start="0,0"
-              End="0,87.5">
+              End="48,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,87.5" />
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="44,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44,27.5"
+                    Point2="48,27.5"
+                    Point3="48,31.5" />
+                  <mssgle:LineSegment
+                    End="48,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7766,7 +8589,79 @@ where [refTable].[SalesOrderID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\MRR TO STG\Stg Sub Category\Stg_SubCategory">
+    design-time-name="Package\MRR TO STG\Stg Sub Category\Stg_DimSubCategory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Lookup with InvoiceItems">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[mrr].[Mrr_InvoicesItem]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR TO STG\Fact Internet Sales- UpdateInvoices\Stg_FactInternetSales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Lookup with Invoice">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[mrr].[Mrr_Invoices]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR TO STG\Fact Internet Sales- UpdateInvoicesItem\Stg_FactInternetSales">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
